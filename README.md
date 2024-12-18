@@ -16,7 +16,7 @@ Addtionally, it relies on the [httpx](https://www.python-httpx.org/) package to 
 
 For project management, [uv](https://docs.astral.sh/uv/) was employed.
 
-> [!INFO]
+> [!NOTE]
 >
 > Not all of the features presented in the official JS SDK have been implemented.
 
