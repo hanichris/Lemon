@@ -16,6 +16,10 @@ Addtionally, it relies on the [httpx](https://www.python-httpx.org/) package to 
 
 For project management, [uv](https://docs.astral.sh/uv/) was employed.
 
+> [!INFO]
+>
+> Not all of the features presented in the official JS SDK have been implemented.
+
 ## Installation
 
 ### Clone the repo
@@ -52,6 +56,9 @@ from lemon.src.internal.setup import Config, lemon_squeezy_setup
 from lemon.src.internal.utils import Error
 from lemon.src.products import list_products
 
+def err_fn(error: Error):
+    raise RuntimeError(f"Lemon Squeezy API Error: {error.message}")
+
 async def main():
     BASE_DIR = Path(__file__).resolve().parent
 
@@ -59,6 +66,7 @@ async def main():
 
     lemon_squeezy_setup(Config(
         api_key= os.getenv("LEMONSQUEEZY_API_KEY"),
+        on_error= err_fn,
     ))
 
     store_id = cast(str, os.getenv("LEMONSQUEEZY_STORE_ID"))
